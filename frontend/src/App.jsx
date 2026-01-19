@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+//  Backend Base URL
+const API_BASE = "https://movie-recommendation-backend-fdqe.onrender.com";
+
 function App() {
   const [userInput, setUserInput] = useState("");
   const [movies, setMovies] = useState([]);
@@ -9,10 +12,9 @@ function App() {
 
   const [loading, setLoading] = useState(false);
   const [historyLoading, setHistoryLoading] = useState(false);
-
   const [error, setError] = useState("");
 
-  //Recommend movies
+  //  Recommend movies
   const handleRecommend = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -20,7 +22,7 @@ function App() {
     setMovies([]);
 
     try {
-      const res = await axios.post("https://movie-recommendation-backend-fdqe.onrender.com/api/recommend", {
+      const res = await axios.post(`${API_BASE}/api/recommend`, {
         user_input: userInput,
       });
 
@@ -33,13 +35,13 @@ function App() {
     }
   };
 
-  // Fetch history from DB
+  //  Fetch history from DB
   const fetchHistory = async () => {
     setHistoryLoading(true);
     setError("");
 
     try {
-      const res = await axios.get("https://movie-recommendation-backend-fdqe.onrender.com/api/history");
+      const res = await axios.get(`${API_BASE}/api/history`);
       setHistory(res.data.slice(0, 5)); // last 5
     } catch (err) {
       setError(" Failed to load history.");
@@ -59,12 +61,11 @@ function App() {
 
   return (
     <div className="container">
-     
-<h1 className="mainTitle">
-  <span className="titleIcon">🎬</span>
-  <span className="titleText">Movie Recommendation</span>
-  <span className="titleSub">Smart picks based on your taste</span>
-</h1>
+      <h1 className="mainTitle">
+        <span className="titleIcon">🎬</span>
+        <span className="titleText">Movie Recommendation</span>
+        <span className="titleSub">Smart picks based on your taste</span>
+      </h1>
 
       <form onSubmit={handleRecommend}>
         <input
@@ -79,7 +80,7 @@ function App() {
         </button>
       </form>
 
-      {/* Buttons */}
+      {/*  Buttons */}
       <div className="actionRow">
         <button
           className="secondaryBtn"
@@ -98,7 +99,7 @@ function App() {
       {/*  Error message */}
       {error && <p className="errorText">{error}</p>}
 
-      {/* Recommended Movies */}
+      {/*  Recommended Movies */}
       <div className="results">
         {movies.length > 0 && <h2>Recommended Movies:</h2>}
 
