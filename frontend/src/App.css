@@ -1,0 +1,376 @@
+/* 
+   GLOBAL RESET
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg1: #05070d;
+  --bg2: #0b1220;
+  --glass: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #e5e7eb;
+  --muted: rgba(229, 231, 235, 0.7);
+  --accent: #c08457; /* luxury brown */
+  --accent2: #7c3aed; /* purple */
+}
+
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(circle at top, #111827 0%, var(--bg2) 45%, var(--bg1) 100%);
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+}
+
+/*
+   MAIN APP CARD
+*/
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 55px auto;
+  padding: 32px;
+
+  /* full height feel */
+  min-height: calc(100vh - 110px);
+
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*  TITLE
+*/
+.mainTitle {
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.titleIcon {
+  font-size: 54px;
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(242, 168, 112, 0.35));
+  animation: floatIcon 3.5s ease-in-out infinite;
+}
+
+.titleText {
+  display: block;
+  font-size: 52px;
+  font-weight: 1000;
+  letter-spacing: -2px;
+  margin-top: 10px;
+
+  /* Gradient text */
+  background: linear-gradient(90deg, #f6c3c3, #879efd, #c08457);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.titleSub {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgba(229, 231, 235, 0.72);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.mainTitle::after {
+  content: "";
+  display: block;
+  width: 220px;
+  height: 6px;
+  margin: 16px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #c08457);
+  box-shadow: 0 16px 40px rgba(192, 132, 87, 0.25);
+}
+
+@keyframes floatIcon {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 
+   FORM
+*/
+form {
+  width: 100%;
+  max-width: 780px;
+  margin-top: 30px;
+
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+
+  padding: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+input {
+  flex: 1;
+  padding: 16px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  outline: none;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  transition: 0.2s ease;
+}
+
+input::placeholder {
+  color: rgba(229, 231, 235, 0.55);
+  font-weight: 600;
+}
+
+input:focus {
+  border-color: rgba(192, 132, 87, 0.55);
+  box-shadow: 0 0 0 5px rgba(192, 132, 87, 0.12);
+}
+
+/*
+   BUTTONS
+ */
+button {
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+
+  cursor: pointer;
+  transition: 0.22s ease;
+
+  color: #fff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+}
+
+button:hover {
+  background: linear-gradient(135deg, #895321, #c08457);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.actionRow {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.secondaryBtn {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(124, 58, 237, 0.12));
+}
+
+.dangerBtn {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(239, 68, 68, 0.12));
+}
+
+/*
+   ERROR TEXT
+*/
+.errorText {
+  margin-top: 18px;
+  color: #fca5a5;
+  font-weight: 900;
+  text-align: center;
+}
+
+/*
+   RESULTS SECTION
+*/
+.results {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.results h2 {
+  margin-top: 38px;
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
+}
+
+/* 
+   MOVIE CARDS GRID
+*/
+.movieGrid {
+  width: 100%;
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* Card */
+.movieCard {
+  padding: 16px;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  transition: 0.22s ease;
+}
+
+.movieCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 132, 87, 0.35);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.5);
+}
+
+.movieTitle {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: #fff;
+}
+
+.movieBadge {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #0b1220;
+  background: linear-gradient(90deg, #c7d2fe, #fff);
+}
+
+/*
+   HISTORY CARD
+*/
+.historyCard {
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 26px;
+  padding: 18px;
+
+  background: rgba(255, 255, 255, 0.034);
+  border: 1px solid rgba(255, 255, 255, 0.159);
+
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.211);
+}
+
+.historyCard p {
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: 900;
+  color: #fff;
+  text-align: left;
+}
+
+.timeText {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.historyCard ul {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 0;
+}
+
+.historyCard li {
+  list-style: none;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+.container,
+form,
+.movieCard,
+.historyCard {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 820px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .movieGrid {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    width: 100%;
+  }
+}

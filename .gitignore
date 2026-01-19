@@ -1,0 +1,16 @@
+# node modules
+node_modules/
+
+# env files
+.env
+backend/.env
+
+# DB file (optional - recommended ignore)
+backend/movies.db
+
+# logs
+*.log
+
+# build/dist
+dist/
+frontend/dist/
