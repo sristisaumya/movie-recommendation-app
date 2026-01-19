@@ -9,9 +9,11 @@ const app = Fastify({ logger: true });
 
 //  CORS enable
 app.register(cors, {
-  origin: true,
+  origin: "*",
   methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
 });
+
 
 
 //  OpenAI client

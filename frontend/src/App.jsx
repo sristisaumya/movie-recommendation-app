@@ -20,7 +20,7 @@ function App() {
     setMovies([]);
 
     try {
-      const res = await axios.post("https://movie-recommendation-backend-fdqe.onrender.com", {
+      const res = await axios.post("https://movie-recommendation-backend-fdqe.onrender.com/api/recommend", {
         user_input: userInput,
       });
 
@@ -39,7 +39,7 @@ function App() {
     setError("");
 
     try {
-      const res = await axios.get("https://movie-recommendation-backend-fdqe.onrender.com");
+      const res = await axios.get("https://movie-recommendation-backend-fdqe.onrender.com/api/history");
       setHistory(res.data.slice(0, 5)); // last 5
     } catch (err) {
       setError(" Failed to load history.");
