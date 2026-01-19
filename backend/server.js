@@ -8,12 +8,19 @@ const OpenAI = require("openai");
 const app = Fastify({ logger: true });
 
 //  CORS enable
-app.register(cors, {
-  origin: "*",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-});
+// app.register(cors, {
+//   origin: "*",
+//   methods: ["GET", "POST"],
+//   allowedHeaders: ["Content-Type"],
+// });
 
+app.register(cors, {
+  origin: [
+    "http://localhost:5173",
+    "https://movie-recommendation-app-phi-seven.vercel.app"
+  ],
+  methods: ["GET", "POST"],
+});
 
 
 //  OpenAI client
